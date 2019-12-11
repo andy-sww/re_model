@@ -18,6 +18,7 @@
       </div>
       </div>
     <h1><img src="img/globe.png">.page_builder</h1>
+    <span id="update-checker">Update wird heruntergeladen <span id="dot-loader">.</span></span>
     <i data-feather="settings" id="open-settings" onclick="Settings.openUserSettings()"></i>
     </header>
     <main>
@@ -70,11 +71,12 @@
         <div>Default Projekt-Pfad:</div>
         <div><input type="text" id="default-project-path" onclick="Settings.openDialog(this)"></div>
       </div>
+      <br>
       <div>
-        <div>Development Modus:</div>
+        <div>Admin Modus:</div>
         <div><input type="checkbox" id="dev-mode"></div>
       </div>
-      <br>
+      <p id="version"></p>
       <button class="green" onclick="Settings.saveUserSettings()">Speichern</button>
       <button class="red" onclick="Settings.closeUserSettings()">Abbrechen</button>
     </div>
@@ -83,6 +85,7 @@
   <script src="js/templating.js" charset="utf-8"></script>
   <script src="js/base.js" charset="utf-8"></script>
   <script src="js/project.js" charset="utf-8"></script>
+  <script src="js/update.js" charset="utf-8"></script>
   <script>
     window.addEventListener('load', function () {
       if(inDev){

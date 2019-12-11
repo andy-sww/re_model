@@ -35,7 +35,7 @@ button:disabled {background: #c1c1c1; cursor: not-allowed;}
 .ref-selector:hover svg {stroke: #4C91BB; cursor: pointer;}
 .ref-selector:hover::after {content: 'Durchsuchen'; position: absolute; font-size: 0.8em; padding: 0.2em; display: inline-block; margin-left: 0.5em; margin-top: -0.5em; background: #f4f4f4; color: #999; opacity: 0.8;}
 
-
+#update-checker {font-family: monospace; font-size: 0.9em; margin-left: 1em; color: #46A534; display: none;}
 #open-settings {float: right; margin: 1.5em 1em 0 0; cursor: pointer;}
 #user-settings {position: absolute; top:0; left: 0; background: grey; width: 100%; height: 100%; padding: 4em;}
 #user-settings > div {display: grid; grid-template-columns: 11em 20em;}
