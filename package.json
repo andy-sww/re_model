@@ -1,16 +1,17 @@
 {
-  "name": "page_builder",
+  "name": "sww_page_builder",
   "version": "1.0.0",
   "description": "page builder",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always"
   },
   "author": "Andreas Rauscher",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andy-sww/page_builder.git"
+    "url": "https://github.com/andy-sww/sww_page_builder_pv.git"
   },
   "license": "ISC",
   "devDependencies": {
