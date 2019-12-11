@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SWW Page Builder</title>
+    <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css" />
+    <link rel="stylesheet" href="node_modules/codemirror/theme/hopscotch.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="top-drag-region">
+      <div class="topbar">
+        <i id="control-minimize" onclick="windowMinimize()" data-feather="minus"></i>
+        <i id="control-maximize" onclick="windowMaximize()" data-feather="maximize"></i>
+        <i id="control-unmaximize" onclick="windowUnmaximize()" data-feather="minimize"></i>
+        <i id="control-close" onclick="windowClose()" data-feather="x"></i>
+      </div>
+      </div>
+    <h1><img src="img/globe.png">.page_builder</h1>
+    <i data-feather="settings" id="open-settings" onclick="Settings.openUserSettings()"></i>
+    </header>
+    <main>
+      <article>
+        <h2 id="template-name" data-reset=true></h2>
+        <div id="switcher"></div>
+        <div id="config-table" data-reset=true></div>
+        <div id="page-table" data-reset=true></div>
+      </article>
+      <aside id="sidebar">
+        <div id="template-interface">
+          <h3>Projekt</h3>
+          <div class="side-element">
+            <button class="blue" onclick="selectTemplate();"><i data-feather='file-text'></i><span>Template wählen</span></button>
+          </div>
+          <div class="side-element">
+            <button onclick="saveProjectAs();"><i data-feather='download'></i><span>Speichern unter</span></button>
+          </div>
+          <div class="side-element">
+            <button onclick="saveProject(projectPath);" id="save-button" disabled='disabled'><i data-feather='save'></i><span>Speichern</span></button>
+          </div>
+          <div class="side-element">
+            <button class="blue" onclick="loadProject();"><i data-feather='upload'></i><span>Projekt laden</span></button>
+          </div>
+          <div id="preview-button-container" class="side-element" data-reset=true></div>
+        </div>
+        <div id="base-interface">
+          <h3>Basis</h3>
+          <div class="side-element">
+            <button class="lightgreen" onclick="selectSite();"><i data-feather='layout'></i><span>Site wählen</span></button>
+          </div>
+          <div class="side-element">
+            Filetypes: <input id="filetypes" value="html, htm, php" data-reset=true>
+            <br>
+            <span id="count" data-reset=true></span>
+          </div>
+          <div id="base-buttons-container" class="side-element" data-reset=true></div>
+          <div id="meta-reports" class="side-element report" data-reset=true></div>
+          <div id="content-reports" class="side-element report" data-reset=true></div>
+        </div>
+      </aside>
+    </main>
+    <div id="user-settings" style="display: none;">
+      <h1>Benutzereinstellungen</h1>
+      <div>
+        <div>Default Template-Pfad:</div>
+        <div><input type="text" id="default-template-path" onclick="Settings.openDialog(this)"></div>
+      </div>
+      <div>
+        <div>Default Projekt-Pfad:</div>
+        <div><input type="text" id="default-project-path" onclick="Settings.openDialog(this)"></div>
+      </div>
+      <div>
+        <div>Development Modus:</div>
+        <div><input type="checkbox" id="dev-mode"></div>
+      </div>
+      <br>
+      <button class="green" onclick="Settings.saveUserSettings()">Speichern</button>
+      <button class="red" onclick="Settings.closeUserSettings()">Abbrechen</button>
+    </div>
+  <script src="renderer.js" charset="utf-8"></script>
+  <script src="js/controls.js" charset="utf-8"></script>
+  <script src="js/templating.js" charset="utf-8"></script>
+  <script src="js/base.js" charset="utf-8"></script>
+  <script src="js/project.js" charset="utf-8"></script>
+  <script>
+    window.addEventListener('load', function () {
+      if(inDev){
+        console.clear()
+      }
+      feather.replace();
+    });
+  </script>
+  </body>
+</html>

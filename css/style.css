@@ -1,0 +1,100 @@
+/* FONTS */
+
+/* lato-regular - latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/lato-v16-latin-regular.woff2') format('woff2')
+}
+
+body {font-family: 'Lato', sans-serif; margin: 0; padding: 0; background: #999; font-size: 17px;}
+
+.top-drag-region {position: absolute; top: 0; left: 0; height: 2em; width: 100%; background: rgba(255,255,255,0.05); cursor: pointer; z-index: 1000;  -webkit-app-region:drag;}
+.topbar {float: right; color: white; margin: 0.3em; cursor: pointer; -webkit-app-region: no-drag; z-index: 2000}
+.topbar svg:hover {filter: opacity(50%);}
+.topbar #control-unmaximize {display: none;}
+
+button {padding: 0.5em; display: inline-block; border-radius: 0.3em; background: #999; color: white; border: none; cursor: pointer; vertical-align: middle; margin-right: 0.5em; background-color: #777;}
+.feather {vertical-align: middle;}
+button.blue {background: #4C91BB;}
+button.green {background: #46A534;}
+button.red {background: #CE1434;}
+button.violet {background: #613684;}
+button.lightgreen {background: #C1D461; color: #555;}
+button:disabled {background: #c1c1c1; cursor: not-allowed;}
+
+.grayout {opacity: 0.5;}
+.loader {vertical-align: middle; height: 20px; width auto; margin-left: 10px;}
+.report a {color: #4C91BB; text-decoration: none; margin-left: 0.3em;}
+.report a:hover {text-decoration: underline;}
+.report span {background: rgb(235, 235, 228); color: #333; font-family: monospace; padding: 0.3em; margin: 0 0.3em 0.5em 0.3em; font-size: 0.8em; display: inline-block; border: 1px solid rgba(0,0,0,0.3);}
+.report span svg {height: 1em; width: 1em; margin-right: 0.5em; margin-top: -0.2em;}
+.ref-selector {margin-left: 0.3em;}
+.ref-selector svg {stroke: #555; margin-top: -0.2em;}
+.ref-selector:hover svg {stroke: #4C91BB; cursor: pointer;}
+.ref-selector:hover::after {content: 'Durchsuchen'; position: absolute; font-size: 0.8em; padding: 0.2em; display: inline-block; margin-left: 0.5em; margin-top: -0.5em; background: #f4f4f4; color: #999; opacity: 0.8;}
+
+
+#open-settings {float: right; margin: 1.5em 1em 0 0; cursor: pointer;}
+#user-settings {position: absolute; top:0; left: 0; background: grey; width: 100%; height: 100%; padding: 4em;}
+#user-settings > div {display: grid; grid-template-columns: 11em 20em;}
+#user-settings div {color: white;}
+#user-settings input[type='text'] {width: 100%;}
+
+header {color: white; background: #383c4a; padding-top: 2em; height: 13vh; min-height: 5.625em; box-sizing: border-box;}
+
+header h1 {margin: 0; padding: 1rem; display: inline-block; vertical-align: middle;}
+
+header h1 img {height: 0.8em; width: auto; margin-right: 0.3em;}
+
+main {display: flex;}
+article {flex: 8; margin: 1em 2em;}
+
+#template-name {color: #f4f4f4; font-weight: normal; font-style: italic;}
+
+#sidebar {flex: 2; display: flex; flex-direction: column; min-height: 87vh; box-sizing: border-box; background: #FFF; color: #555; padding: 0 1em;}
+#sidebar h3 {margin: 0.5em 0;}
+.side-element {padding: 0.5em 0;}
+.side-element h2 {text-transform: uppercase; margin-top: 0;}
+.side-element > button {width: 100%;}
+.side-element > button span {vertical-align: middle; font-size: 1.4em; margin-left: 0.5em;}
+#filetypes {padding: 0.5em; font-size: 1em; margin-top: 0.5em; color: #333;}
+
+#base-interface {display: none;}
+
+/* switcher */
+#switcher {display: flex; max-width: 700px; margin-bottom: 1em;}
+#switcher > div {flex: 1; background: white; border: 1px solid rgba(0,0,0,0.1); padding: 0.5em; color: #999; cursor: pointer;}
+#switcher > div.active {background: #4C91BB; color: white; font-weight: bold;}
+
+div {box-sizing: border-box;}
+textarea {box-sizing: border-box; width: 100%; min-height: 5em;}
+.CodeMirror {height: auto; font-size: 0.8em;}
+.overlay {width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.8);}
+.modal {margin: 10%;}
+.modal h1 {color: white;}
+.picker-instance {position: absolute; display: inline-grid; box-shadow: 0px 0px 150px black; background: white; border-radius: 0.5em;}
+#config-table, #page-table {display: flex; flex-direction: column; background: white;}
+.row {flex: 1; display: flex;}
+.row div {padding: 0.3em;}
+.row > div {border: 1px solid rgba(0,0,0,0.1);}
+.row > div:first-child {flex: 1; background: rgba(0,0,0,0.05); color: #222; font-weight: bold; font-size: 0.9em;}
+.row > div:last-child {flex: 6; display: flex; align-items: center;}
+.row.category {font-weight: bold; padding: 0.3em; font-size: 1.4em; background: #4C91BB; color: white; border: 1px solid rgba(0,0,0,0.1)}
+input.less {border: none; width: 6em; text-align: center; padding: 0.2em 1em; border-radius: 0.5em; font-family: 'Lato', sans-serif; cursor: pointer;}
+input.less:hover {opacity: 0.8;}
+#preview-button-container {margin-top: 1em;}
+#base-buttons-container button {margin-bottom: 0.5em;}
+/* tootltip */
+.init-only.tooltip:hover:after {content: "Das Projekt muss erst gespeichert werden!"; position: absolute; background: #F8FFFF; color: #23566C;
+padding: 0.5em; display: block; box-sizing: border-box; border: 1px solid #23566C; border-radius: 0.5em;}
+
+/*base*/
+#page-table div {box-sizing: border-box;}
+#page-table > div {display: grid; grid-template-columns: 4em 4em auto 4em 6em 5em; border: 1px solid rgba(0,0,0,0.1)}
+#page-table > div > div {padding: 0.3em; border-right: 1px solid rgba(0,0,0,0.1); text-align: center;}
+#page-table > div > div:nth-child(3) {text-align: left;}
+#page-table-head {font-weight: bold; background: #4C91BB; color: white;}
+#select-all-row {background: rgba(0,0,0,0.05)}
+#select-all-row > div:nth-child(2) {border: none;}
