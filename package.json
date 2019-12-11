@@ -1,6 +1,6 @@
 {
   "name": "sww_page_builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "page builder",
   "main": "main.js",
   "scripts": {
@@ -15,14 +15,14 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "electron": "^6.0.12"
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0"
   },
   "dependencies": {
     "a-color-picker": "^1.2.1",
     "cheerio": "^1.0.0-rc.3",
     "codemirror": "^5.49.2",
     "directory-tree": "^2.2.4",
-    "electron-builder": "^21.2.0",
     "electron-prompt": "^1.4.0",
     "electron-updater": "^4.2.0",
     "feather-icons": "^4.24.1",

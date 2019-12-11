@@ -38,8 +38,7 @@ function toggleInitState(state){
 function saveProjectAs(){
   // check if there is an active template loaded
   if(templateLoaded){
-    let options = {}
-    dialog.showSaveDialog(null, options, function(res){
+    dialog.showSaveDialog(null, {defaultPath: projectsLocation}, function(res){
       if(res !== "undefined" && res.length > 0){
         // check if users tries to save a project into the default templates folder
         if(res.includes(templatesLocation)){
