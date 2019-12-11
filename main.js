@@ -1,6 +1,7 @@
 const {electron, app, BrowserWindow, ipcMain} = require('electron')
 const { autoUpdater } = require('electron-updater')
 const path = require('path')
+autoUpdater.autoDownload = false
 
 let win
 
@@ -19,10 +20,10 @@ function createWindow() {
   })
 
   win.loadFile('index.html')
-  //win.webContents.openDevTools()
+  win.webContents.openDevTools()
 
   win.on('closed', () => {
-    //win=null
+    win=null
     app.quit()
   })
 }
@@ -38,12 +39,23 @@ ipcMain.on('app_version', (event) => {
   event.sender.send('app_version', { version: app.getVersion() });
 });
 
-autoUpdater.on('update-available', () => {
-  mainWindow.webContents.send('update_available')
+autoUpdater.on('update-available', (info) => {
+  win.webContents.send('update_available')
+  autoUpdater.downloadUpdate()
+  .then(result => {
+    win.webContents.send('info', {msg: result})
+  })
+  .catch(err => {
+    win.webContents.send('info', {msg: err})
+  })
+})
+
+autoUpdater.on('error', (err) => {
+  win.webContents.send('info', {msg: err})
 })
 
 autoUpdater.on('update-downloaded', () => {
-  mainWindow.webContents.send('update_downloaded')
+  win.webContents.send('update_downloaded')
 })
 
 ipcMain.on('restart_app', () => {

@@ -15,6 +15,10 @@ ipcRenderer.on('update_available', () => {
   updateChecker(true)
 })
 
+ipcRenderer.on('info', function(event, data){
+  console.log(data.msg);
+})
+
 ipcRenderer.on('update_downloaded', () => {
   ipcRenderer.removeAllListeners('update_downloaded')
   updateChecker(false)

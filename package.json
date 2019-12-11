@@ -1,6 +1,6 @@
 {
   "name": "sww_page_builder",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "page builder",
   "main": "main.js",
   "scripts": {
