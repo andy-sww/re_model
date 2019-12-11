@@ -5,7 +5,7 @@ const { app , dialog, getCurrentWindow, BrowserWindow } = require('electron').re
 const root = app.getAppPath()
 const path = require('path')
 const userConfigPath = stabilize(app.getPath('userData'), 'user.json')
-const previewPath = stabilize(root, 'preview')
+const previewPath = stabilize(app.getPath('userData'), 'preview')
 const os = require('os')
 // npm externals
 const fs = require('fs-extra')

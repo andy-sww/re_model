@@ -307,6 +307,12 @@ function toggleSwitcher(target){
 function previewSite(){
   // update config from inputs before previewing
   updateConfig()
+  // sanitize preview folder
+  fs.emptyDirSync(previewPath, err => {
+    if(err){
+      Notifier.notify("error", "Cleanup", `Der Preview Ordner ${previewPath} konnte nicht geleert werden. Möglicherweise befindet sich eine Datei darin in Nutzung.`, err)
+    }
+  })
   // render html for preview
   var preview
   try {
