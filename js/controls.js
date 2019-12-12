@@ -20,8 +20,12 @@ function windowUnmaximize(){
 
 function windowClose(){
   // SAVE BEFORE QUIT
-  if(!projectSaved){
-    Notifier.dataLossWarning(config.template, 'close')
+  if(projectInit && !projectSaved){
+    let name = 'Unbenanntes Projekt'
+    if(check(config, 'template')){
+      name = config.template
+    }
+    Notifier.dataLossWarning(name, 'close')
     .then(response => {
       if(response=='continue'){
         controls.close()

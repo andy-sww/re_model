@@ -50,6 +50,7 @@ function showUpdateInstallScreen(){
     type: 'info',
     buttons: [`Installieren und Neustart`, `Beim Schließen Installieren`],
     defaultId: 0,
+    cancelId: 1,
     title: 'Auto Updater',
     detail: 'Ein neues Update ist verfügbar.'
   }
