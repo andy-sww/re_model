@@ -52,6 +52,7 @@ var switcher = document.getElementById('switcher')
 var userSettings = document.getElementById('user-settings')
 var defaultTemplatePath = document.getElementById('default-template-path')
 var defaultProjectPath = document.getElementById('default-project-path')
+var defaultBasePath = document.getElementById('default-base-path')
 var devMode = document.getElementById('dev-mode')
 var resetNodes = document.querySelectorAll("[data-reset]")
 
@@ -59,7 +60,7 @@ var resetNodes = document.querySelectorAll("[data-reset]")
 // windows
 var previewWindow, assetWindow, reportWindow
 // variables
-var basePath, typeMatch, fileTypes, config, codeAreas, colorFields, projectPath, editables, dwState, userConfig, templatesLocation
+var basePath, typeMatch, fileTypes, config, codeAreas, colorFields, projectPath, editables, dwState, userConfig, templatesLocation, baseDefaultLocation
 // objects
 var template = {}
 var project = {}

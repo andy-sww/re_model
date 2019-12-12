@@ -106,7 +106,7 @@ function saveProject(savePath){
 function loadProject(){
   // data loss prevention if user tries to load a new project while not saved
   if(projectInit && !projectSaved){
-    Notifier.dataLossWarning(config.template) // @notifier.js
+    Notifier.dataLossWarning(config.template, 'load') // @notifier.js
     .then(response => {
       // promise resolved to aborting
       if(response=="abort"){
@@ -262,8 +262,16 @@ function renderOutput(){
       makeOutputFile(renderPage, renderPageConfig, outputPath)
     }
   }
-  // let loader spin for a minimum of 1 second for visual feedback
-  setTimeout(function(){ loader({destroy: true, id: 'spinner'}) }, 1000);
+  // let loader spin for a minimum of 1 second for visual feedback then open output folder
+  setTimeout(function(){
+    loader({destroy: true, id: 'spinner'})
+    openExplorer(outputPath, function(err){
+      if(err){
+        Notifier.notify("warning", "Explorer",
+        `Der angegebene Pfad "${outputPath}" konnte nicht geöffnet werden`, err) // @notifier.js
+      }
+    })
+  }, 1000);
 }
 
 // MAKE SINGLE OUTPUT FILE

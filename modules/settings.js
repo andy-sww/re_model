@@ -27,6 +27,7 @@ module.exports = {
         let userInit = {
           defaultTemplatePath: null,
           defaultProjectPath: null,
+          defaultBasePath: null,
           devMode: false
         }
         fs.writeFile(userConfigPath, JSON.stringify(userInit, null, 2), (err) => {
@@ -47,6 +48,7 @@ module.exports = {
     userSettings.style.display = "block"
     defaultTemplatePath.value = userConfig.defaultTemplatePath
     defaultProjectPath.value = userConfig.defaultProjectPath
+    defaultBasePath.value = userConfig.defaultBasePath
     devMode.checked = userConfig.devMode
   },
   closeUserSettings: function(){
@@ -70,6 +72,12 @@ module.exports = {
     else {
       userConfig.defaultProjectPath = defaultProjectPath.value
     }
+    if(defaultBasePath.value.length <= 0){
+      userConfig.defaultBasePath = null
+    }
+    else {
+      userConfig.defaultBasePath = defaultBasePath.value
+    }
     userConfig.devMode = devMode.checked
     fs.writeFile(userConfigPath, JSON.stringify(userConfig, null, 2), (err) => {
       if (err){
@@ -84,12 +92,13 @@ module.exports = {
   },
   openDialog: function(node){
     let currentDefaultPath
+    let home = path.join(os.homedir())
     if(node.id == 'default-template-path'){
       if(userConfig.defaultTemplatePath != null){
         currentDefaultPath = userConfig.defaultTemplatePath
       }
       else {
-        currentDefaultPath = path.join(os.homedir())
+        currentDefaultPath = home
       }
     }
     else if(node.id == 'default-project-path'){
@@ -97,11 +106,19 @@ module.exports = {
         currentDefaultPath = userConfig.defaultProjectPath
       }
       else {
-        currentDefaultPath = path.join(os.homedir())
+        currentDefaultPath = home
+      }
+    }
+    else if(node.if == 'default-base-path'){
+      if(userConfig.defaultBasePath != null){
+        currentDefaultPath = userConfig.defaultBasePath
+      }
+      else {
+        currentDefaultPath = home
       }
     }
     else {
-      currentDefaultPath = path.join(os.homedir())
+      currentDefaultPath = home
     }
     dialog.showOpenDialog({defaultPath: currentDefaultPath, properties: ['openDirectory']})
     .then(response => {
@@ -120,5 +137,6 @@ module.exports = {
     inDev = userConfig.devMode
     templatesLocation = path.normalize(userConfig.defaultTemplatePath)
     projectsLocation = path.normalize(userConfig.defaultProjectPath)
+    baseDefaultLocation = path.normalize(userConfig.defaultBasePath)
   }
 }

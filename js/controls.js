@@ -19,5 +19,19 @@ function windowUnmaximize(){
 }
 
 function windowClose(){
-  controls.close()
+  // SAVE BEFORE QUIT
+  if(!projectSaved){
+    Notifier.dataLossWarning(config.template, 'close')
+    .then(response => {
+      if(response=='continue'){
+        controls.close()
+      }
+      else {
+        return false
+      }
+    })
+  }
+  else{
+    controls.close()
+  }
 }

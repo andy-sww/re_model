@@ -21,7 +21,7 @@ function checkIntegrity(tPath){
 function selectTemplate(){
   // data loss prevention
   if(projectInit && !projectSaved){
-    Notifier.dataLossWarning(config.template) // @notifier.js
+    Notifier.dataLossWarning(config.template, 'load') // @notifier.js
     .then(response => {
       // promise resolved to aborting
       if(response=="abort"){
@@ -263,6 +263,7 @@ function makeConfigTable(params){
         .then(value => {
           if(value) {
             this.previousSibling.value = value
+            toggleSaveState(false)
           }
         })
         .catch(err => {

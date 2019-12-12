@@ -24,7 +24,15 @@ function selectSite(){
     fileTypes = fileTypeInput.value.split(",").map(Function.prototype.call, String.prototype.trim).join("|")
     typeMatch = new RegExp("\\.(" + fileTypes + ")$")
     // open dialog for base folder selection
-    dialog.showOpenDialog({properties: ['openDirectory']})
+    function browseBase(){
+      if(check(config, 'pagesConfig') && check(config.pagesConfig, 'basePath')){
+        return config.pagesConfig.basePath
+      }
+      else {
+        return baseDefaultLocation
+      }
+    }
+    dialog.showOpenDialog({defaultPath: browseBase(), properties: ['openDirectory']})
     .then(response => {
       if(response.canceled){
         return false

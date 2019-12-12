@@ -1,4 +1,4 @@
-<h2><img src="https://github.com/andy-sww/re_model/blob/master/img/logo.png">&nbsp;ReModel</h2>
+<h1><img src="https://github.com/andy-sww/re_model/blob/master/img/logo.png">&nbsp;ReModel</h1>
 <h6>(fka page_builder)</h6>
 
 - application for remodeling old websites.

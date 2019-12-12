@@ -130,16 +130,23 @@ module.exports = {
     })
   },
   // data loss warning with option buttons
-  dataLossWarning: function(name){
+  dataLossWarning: function(name, context){
     return new Promise(function (resolve, reject){
+      let filler = '.'
+      if(context=='load'){
+        filler = ' wenn ein neues Projekt oder Template geladen wird.\n\nWas soll vor dem Laden getan werden?\n'
+      }
+      else if(context=='close'){
+        filler = ' wenn das Programm geschlossen wird.'
+      }
       let options = {
         type: 'warning',
         buttons: ['Abbrechen', 'Speichern', 'Änderungen Verwerfen'],
         defaultId: 0,
+        cancelId: 0,
         title: 'Datei nicht gespeichert',
         detail: `Das Projekt "${name}" wurde nicht gespeichet.
-        \nUngespeicherte Daten können verloren gehen wenn ein neues Projekt oder Template geladen wird.
-        \n\nWas soll vor dem Laden getan werden?\n`
+        \nUngespeicherte Daten können verloren gehen${filler}`
       }
       dialog.showMessageBox(null, options, (response) => {
         // abort
