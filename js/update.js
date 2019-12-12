@@ -48,7 +48,7 @@ function updateChecker(state){
 function showUpdateInstallScreen(){
   let options = {
     type: 'info',
-    buttons: [`Installieren`, `Später`],
+    buttons: [`Installieren und Neustart`, `Beim Schließen Installieren`],
     defaultId: 0,
     title: 'Auto Updater',
     detail: 'Ein neues Update ist verfügbar.'
@@ -56,7 +56,7 @@ function showUpdateInstallScreen(){
   dialog.showMessageBox(null, options, (response) => {
     // abort
     if(response == 1){
-      return false
+      updatePending()
     }
     // continue
     if(response == 0){
@@ -66,5 +66,9 @@ function showUpdateInstallScreen(){
 }
 
 function restartApp() {
-  ipcRenderer.send('restart_app');
+  ipcRenderer.send('restart_app')
+}
+
+function updatePending(){
+  ipcRenderer.send('update_pending')
 }

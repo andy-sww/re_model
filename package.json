@@ -1,7 +1,7 @@
 {
   "name": "ReModel",
   "productName": "ReModel",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "application for remodeling old websites",
   "main": "main.js",
   "scripts": {

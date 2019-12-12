@@ -1,7 +1,9 @@
 const {electron, app, BrowserWindow, ipcMain} = require('electron')
 const { autoUpdater } = require('electron-updater')
 const path = require('path')
+
 autoUpdater.autoDownload = false
+var updateOnClose = false
 
 let win
 
@@ -22,8 +24,13 @@ function createWindow() {
   win.loadFile('index.html')
   //win.webContents.openDevTools()
   win.on('closed', () => {
-    win=null
-    app.quit()
+    if(updateOnClose){
+      autoUpdater.quitAndInstall()
+    }
+    else {
+      win=null
+      app.quit()
+    }
   })
 }
 
@@ -33,15 +40,26 @@ app.on('ready', () => {
   autoUpdater.checkForUpdatesAndNotify()
 })
 
-app.on('window-all-closed', () => {app.quit()})
+app.on('window-all-closed', () => {
+  if(updateOnClose){
+    autoUpdater.quitAndInstall()
+  }
+  else {
+    app.quit()
+  }
+})
 
 // IPC
 ipcMain.on('app_version', (event) => {
   event.sender.send('app_version', { version: app.getVersion() });
-});
+})
 
 ipcMain.on('restart_app', () => {
   autoUpdater.quitAndInstall()
+})
+
+ipcMain.on('update_pending', () => {
+  updateOnClose = true
 })
 
 // AUTO UPDATER
