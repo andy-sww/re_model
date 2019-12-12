@@ -1,4 +1,5 @@
-# ReModel (fka page_builder)
+<h2><img src="https://github.com/andy-sww/re_model/blob/master/img/logo.png">&nbsp;ReModel</h2>
+<h6>(fka page_builder)</h6>
 
 - application for remodeling old websites.
 - uses templating for quick and easy creation
