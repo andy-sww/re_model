@@ -1,17 +1,23 @@
 {
-  "name": "sww_page_builder",
+  "name": "ReModel",
+  "productName": "ReModel",
   "version": "1.0.0",
-  "description": "page builder",
+  "description": "application for remodeling old websites",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder build --win --publish never",
     "deploy": "electron-builder build --win --publish always"
   },
-  "author": "Andreas Rauscher",
+  "author": "SWW Apps",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andy-sww/sww_page_builder_pv.git"
+    "url": "https://github.com/andy-sww/re_model.git"
+  },
+  "build": {
+    "win": {
+      "icon": "build/icon.ico"
+    }
   },
   "license": "ISC",
   "devDependencies": {

@@ -5,6 +5,7 @@ autoUpdater.autoDownload = false
 
 let win
 
+//MAIN WIN
 function createWindow() {
   win = new BrowserWindow({
     width: 1180,
@@ -18,16 +19,15 @@ function createWindow() {
       nodeIntegration: true
     }
   })
-
   win.loadFile('index.html')
-  win.webContents.openDevTools()
-
+  //win.webContents.openDevTools()
   win.on('closed', () => {
     win=null
     app.quit()
   })
 }
 
+// APP
 app.on('ready', () => {
   createWindow()
   autoUpdater.checkForUpdatesAndNotify()
@@ -35,10 +35,16 @@ app.on('ready', () => {
 
 app.on('window-all-closed', () => {app.quit()})
 
+// IPC
 ipcMain.on('app_version', (event) => {
   event.sender.send('app_version', { version: app.getVersion() });
 });
 
+ipcMain.on('restart_app', () => {
+  autoUpdater.quitAndInstall()
+})
+
+// AUTO UPDATER
 autoUpdater.on('update-available', (info) => {
   win.webContents.send('update_available')
   autoUpdater.downloadUpdate()
@@ -56,8 +62,4 @@ autoUpdater.on('error', (err) => {
 
 autoUpdater.on('update-downloaded', () => {
   win.webContents.send('update_downloaded')
-})
-
-ipcMain.on('restart_app', () => {
-  autoUpdater.quitAndInstall()
 })

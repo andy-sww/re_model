@@ -1,4 +1,4 @@
-# page_builder production version
+# ReModel (fka page_builder)
 
 - application for remodeling old websites.
 - uses templating for quick and easy creation

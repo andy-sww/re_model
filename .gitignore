@@ -1,4 +1,5 @@
 node_modules/
 dist/
+resources/
 .DS_Store
 electron-builder.yml

@@ -46,7 +46,8 @@ header {color: white; background: #383c4a; padding-top: 2em; height: 13vh; min-h
 
 header h1 {margin: 0; padding: 1rem; display: inline-block; vertical-align: middle;}
 
-header h1 img {height: 0.8em; width: auto; margin-right: 0.3em;}
+header h1 img {height: 1.3em; width: auto; margin-right: 0.3em; display: inline-block; vertical-align: middle;}
+header h1 span {display: inline-block; vertical-align: middle;}
 
 main {display: flex;}
 article {flex: 8; margin: 1em 2em;}
