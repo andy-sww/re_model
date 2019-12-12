@@ -14,11 +14,6 @@
     "type": "git",
     "url": "https://github.com/andy-sww/re_model.git"
   },
-  "build": {
-    "win": {
-      "icon": "build/icon.ico"
-    }
-  },
   "license": "ISC",
   "devDependencies": {
     "electron": "^6.0.12",
