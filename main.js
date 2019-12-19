@@ -5,7 +5,7 @@ const path = require('path')
 autoUpdater.autoDownload = false
 var updateOnClose = false
 
-let win
+var win
 
 //MAIN WIN
 function createWindow() {
@@ -21,8 +21,17 @@ function createWindow() {
       nodeIntegration: true
     }
   })
-  win.loadFile('index.html')
-  //win.webContents.openDevTools()
+
+  win.webContents.session.clearStorageData()
+  .then(
+    loadMainWindow()
+  )
+
+  function loadMainWindow(){
+    win.loadFile('index.html')
+    win.webContents.openDevTools()
+  }
+
   win.on('closed', () => {
     if(updateOnClose){
       autoUpdater.quitAndInstall()

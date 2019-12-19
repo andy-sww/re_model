@@ -29,7 +29,7 @@ module.exports = {
       let itemKey = item
       let val = obj[itemKey]
       if(typeof(val)=="object"){
-        templatingError("Objekttiefe wird nicht unterstützt.", `${key}.${itemKey}.${val}`)
+        Notifier.templatingError("Objekttiefe wird nicht unterstützt.", `${key}.${itemKey}.${val}`)
       }
       else{
         container.innerHTML += `<div>${normalizeString(itemKey)}:<br>
