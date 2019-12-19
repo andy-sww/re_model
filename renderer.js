@@ -58,7 +58,7 @@ var resetNodes = document.querySelectorAll("[data-reset]")
 
 // VARIABLES
 // windows
-var previewWindow, assetWindow, reportWindow
+var previewWindow, assetWindow, reportWindow, initialPreview
 // variables
 var basePath, typeMatch, fileTypes, config, codeAreas, colorFields, projectPath, editables, dwState, userConfig, templatesLocation, baseDefaultLocation
 // objects
@@ -86,6 +86,7 @@ Settings.checkUserSettings()
 
 //WINDOWS
 function preparePreviewWindow(){
+  initialPreview = true
   previewWindow = new BrowserWindow({ width: 1180, height: 700, frame: true, show: false })
 }
 function prepareAssetWindow(){

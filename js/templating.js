@@ -148,7 +148,7 @@ function makeConfigTable(params){
         }
       }
     }
-    // objects
+    // nested
     else {
       Notifier.templatingError("Objekt wird nicht unterstützt.", `links.${key}`) // @notifier.js
     }
@@ -277,6 +277,9 @@ function makeConfigTable(params){
   switcher.innerHTML = `
     <div id='switch-template' class='active' onclick="toggleSwitcher('template')">Template / Projekt</div><div id='switch-base' onclick="toggleSwitcher('base')">Basis Seite</div>
   `
+  // initialize Squirrelly helpers
+  initSqrlHelpers() // @js/sqrl-helpers.js
+
   pageTable.style.display = "none"
 } // END CREATION OF CONFIG TABLE
 
@@ -345,6 +348,17 @@ function previewSite(){
   // OPEN PREVIEW IN NEW WINDOW
   previewWindow.loadFile(stabilize(previewPath, 'default.html'))
   previewWindow.show()
+  // clear preview page storage data
+  previewWindow.webContents.on('did-finish-load', () => {
+    previewWindow.webContents.session.clearStorageData({
+      storages: ['indexdb']
+    })
+    previewWindow.webContents.session.clearCache()
+    if(initialPreview){
+      previewWindow.reload()
+      initialPreview = false
+    }
+  })
   previewWindow.on('closed', () =>{
     preparePreviewWindow()
   })
