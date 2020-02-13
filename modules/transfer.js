@@ -41,11 +41,23 @@ module.exports = {
   // Content
   getContentData: function(file, identifier){
     let content
+    // check identifier for hidden data splitted by comma
+    let idArray = identifier.split(",")
+    console.log(idArray);
+    console.log(idArray.length);
     let $ = cheerio.load(fs.readFileSync(file), {
       lowerCaseTags: true,
       lowerCaseAttributeNames: true
     })
-    if($(identifier).html()){
+    if(idArray.length == 2){
+      let item = idArray[0]
+      let index = idArray[1]
+      var result = $(item).slice(index).eq(0).html()
+      if(result !== "undefined"){
+        return [true, result]
+      }
+    }
+    else if($(identifier).html()){
       return[true, $(identifier).html()]
     }
     else {
