@@ -401,7 +401,10 @@ function makePageTable(sites){
           // CONTENT
           let contentArray = Transfer.getContentData(referencePage, identifier)
           if(contentArray[0]){
-            config.pages[p].content = contentArray[1]
+            // route through dom parser to decode html entities
+            let dom = parser.parseFromString('<!doctype html><body>' + contentArray[1], 'text/html')
+            let newHTML = dom.body.innerHTML
+            config.pages[p].content = newHTML
             setBox('content-transfer', p, true)
           }
           else {

@@ -43,8 +43,6 @@ module.exports = {
     let content
     // check identifier for hidden data splitted by comma
     let idArray = identifier.split(",")
-    console.log(idArray);
-    console.log(idArray.length);
     let $ = cheerio.load(fs.readFileSync(file), {
       lowerCaseTags: true,
       lowerCaseAttributeNames: true

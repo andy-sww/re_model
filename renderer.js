@@ -73,6 +73,8 @@ var templateLoaded = false
 var projectSaved = false
 var projectInit = false
 var renderButtonShows = false
+// other
+var parser = new DOMParser
 // DEVELOPMENT / DEBUG
 var inDev
 
