@@ -348,6 +348,7 @@ function previewSite(){
   // OPEN PREVIEW IN NEW WINDOW
   previewWindow.loadFile(stabilize(previewPath, 'default.html'))
   previewWindow.show()
+  previewWindow.maximize()
   // clear preview page storage data
   previewWindow.webContents.on('did-finish-load', () => {
     previewWindow.webContents.session.clearStorageData({

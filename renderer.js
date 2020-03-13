@@ -89,7 +89,7 @@ Settings.checkUserSettings()
 //WINDOWS
 function preparePreviewWindow(){
   initialPreview = true
-  previewWindow = new BrowserWindow({ width: 1180, height: 700, frame: true, show: false })
+  previewWindow = new BrowserWindow({ frame: true, show: false })
 }
 function prepareAssetWindow(){
   assetWindow = new BrowserWindow({ frame: true, show:false })
