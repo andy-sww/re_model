@@ -168,7 +168,7 @@ function makeConfigTable(params){
       let row = document.createElement("DIV")
       row.classList.add("css", "row")
       row.innerHTML = `<div>${normalizeString(key)}</div>
-      <div><div><input class='less color editable' type='text' name='css.colors.${key}' value='${val}'></div></div>`
+      <div><div><input class='less color editable' type='text' name='css.colors.${key}' value='${val}' readonly></div></div>`
       configTable.appendChild(row)
     }
     colorConfig()
@@ -180,7 +180,7 @@ function makeConfigTable(params){
       let row = document.createElement("DIV")
       row.classList.add("css", "row")
       row.innerHTML = `<div>${normalizeString(key)}</div>
-      <div><div><input class='less editable' type='text' name='css.${key}' value='${val}'></div></div>`
+      <div><div><input class='less editable' type='text' name='css.${key}' value='${val}'</div></div>`
       configTable.appendChild(row)
     }
   }

@@ -2,6 +2,10 @@
 module.exports = {
   startColorPicker: function(node, defaultColor){
     if(pickerActive){
+      node.addEventListener("click", function initCP(){
+        ColorPicker.startColorPicker(node, defaultColor) // @color-picker.js
+        this.removeEventListener("click", initCP)
+      })
       return false
     }
     pickerActive = true
@@ -46,6 +50,10 @@ module.exports = {
     }
     // discard changes
     function cpDiscard(){
+      node.addEventListener("click", function initCp (){
+        module.exports.startColorPicker(node, defaultColor)
+        this.removeEventListener("click", initCp)
+      })
       picker.remove()
       pickerActive = false
     }
