@@ -38,20 +38,24 @@ function toggleInitState(state){
 function saveProjectAs(){
   // check if there is an active template loaded
   if(templateLoaded){
-    dialog.showSaveDialog(null, {defaultPath: projectsLocation}, function(res){
-      if(res !== "undefined" && res.length > 0){
-        // check if users tries to save a project into the default templates folder
-        if(res.includes(templatesLocation)){
-          Notifier.notify("error", "Saving", `Ein Projekt kann nicht in den Default-Templates Ordner gespeichert werden.\n\nBitte einen anderen Speicherort wählen.`) // @notifier.js
-          return false
+    let filename = dialog.showSaveDialog(null, {defaultPath: projectsLocation})
+      .then(result => {
+        filename = result.filePath
+        if(filename !== ""){
+          // check if users tries to save a project into the default templates folder
+          if(filename.includes(templatesLocation)){
+            Notifier.notify("error", "Saving", `Ein Projekt kann nicht in den Default-Templates Ordner gespeichert werden.\n\nBitte einen anderen Speicherort wählen.`) // @notifier.js
+            return false
+          }
+          // update template name in config to saved-file-name
+          let array = path.normalize(filename).split("\\") // BUGGY: works only on windows
+          let name = array[(array.length - 1)]
+          config.template = name
+          saveProject(filename)
         }
-        // update template name in config to saved-file-name
-        let array = path.normalize(res).split("\\") // BUGGY: works only on windows
-        let name = array[(array.length - 1)]
-        config.template = name
-        saveProject(res)
-      }
-    })
+      }).catch(err => {
+        Notifier.notify("error", "General", "Error message:", err) // @notifier.js
+      })
   }
   // if there is no loaded template abort
   else{
