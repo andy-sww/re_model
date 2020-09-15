@@ -22,19 +22,19 @@
   "dependencies": {
     "a-color-picker": "^1.2.1",
     "cheerio": "^1.0.0-rc.3",
-    "codemirror": "^5.49.2",
+    "codemirror": "^5.57.0",
     "directory-tree": "^2.2.4",
-    "electron-prompt": "^1.4.0",
-    "electron-updater": "^4.2.0",
-    "feather-icons": "^4.24.1",
+    "electron-prompt": "^1.6.0",
+    "electron-updater": "^4.3.4",
+    "feather-icons": "^4.28.0",
     "fs-extra": "^8.1.0",
     "invert-color": "^2.0.0",
-    "less": "^3.10.3",
+    "less": "^3.12.2",
     "object-path": "^0.11.4",
     "open-file-explorer": "^1.0.2",
     "pretty": "^2.0.0",
     "relative": "^3.0.2",
-    "squirrelly": "^7.7.0",
+    "squirrelly": "^7.9.2",
     "traverse": "^0.6.6"
   }
 }
