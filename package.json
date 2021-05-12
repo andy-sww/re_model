@@ -22,7 +22,7 @@
   "dependencies": {
     "a-color-picker": "^1.2.1",
     "cheerio": "^1.0.0-rc.3",
-    "codemirror": "^5.57.0",
+    "codemirror": "^5.58.2",
     "directory-tree": "^2.2.4",
     "electron-prompt": "^1.6.0",
     "electron-updater": "^4.3.4",
